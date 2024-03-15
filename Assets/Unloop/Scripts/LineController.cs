@@ -38,8 +38,8 @@ public class LineController : MonoBehaviour
         for (int i = pointsCount - 1; i > 0; i--)
         {
             float startTime = Time.time;
-            Vector3 startPosition = linePoints[i-1].position;
-            Vector3 endPosition = linePoints[i - 2].position;
+            Vector3 startPosition = linePoints[i].position;
+            Vector3 endPosition = linePoints[i -1].position;
 
             float t = 0f;
             while (t < 1f)
