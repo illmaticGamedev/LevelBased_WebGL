@@ -8,18 +8,18 @@ public class LineController : MonoBehaviour
     [SerializeField] List<Transform> linePoints;
     [SerializeField] float animationTime = 5f;
     int pointsCount;
+    UnloopPuzzle unloopPuzle;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        unloopPuzle= GetComponentInParent<UnloopPuzzle>();
         pointsCount = linePoints.Count;
         drawLine();
-        StartCoroutine(RetractLine());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LineRetraction()
     {
-        //drawLine();
+        StartCoroutine(retractLine());
     }
 
     void drawLine()
@@ -31,7 +31,7 @@ public class LineController : MonoBehaviour
         }
     }
 
-    IEnumerator RetractLine()
+    IEnumerator retractLine()
     {
         float segmentDuration = animationTime / (pointsCount - 1);
 
@@ -52,6 +52,7 @@ public class LineController : MonoBehaviour
 
             linePoints[i].position = endPosition;
             linePoints.Remove(linePoints[i]);
+            if(i!<0)
             lineRenderer.SetPosition(i, endPosition);
             yield return null;
         }
