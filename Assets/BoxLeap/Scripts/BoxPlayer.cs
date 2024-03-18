@@ -12,18 +12,23 @@ public class BoxPlayer : MonoBehaviour
     public bool IsGrounded = false;
     public bool IsGroundedOnce = false; 
     SoundManager soundManager;
+    [SerializeField] ParticleSystem particles;
     void Start()
     {
         soundManager = SoundManager.Instance;
         boxLeapMan = BoxLeapManager.Instance;
         rb = GetComponent<Rigidbody2D>();
+        particles = GetComponentInChildren<ParticleSystem>();
+        particles.Stop();
         ResetPlayer();
     }
 
     void frontMovement()
     {
         if (IsGroundedOnce)
-        rb.velocity = new Vector2(forceAmt,rb.velocity.y);
+        {
+            rb.velocity = new Vector2(forceAmt, rb.velocity.y);
+        }
     }
 
     void jump()
@@ -32,6 +37,7 @@ public class BoxPlayer : MonoBehaviour
         {
             rb.AddForce(new Vector3(rb.velocity.x, jumpForceAmt), ForceMode2D.Impulse);
             soundManager.BounceSound();
+            particles.Play();
             IsGrounded = false;
         }
     }
@@ -49,7 +55,8 @@ public class BoxPlayer : MonoBehaviour
     {
         IsGrounded = false;
         IsGroundedOnce = false;
-        rb.velocity = new Vector2(0, 0);
+        GetComponent<ParticleSystem>().Stop();
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -58,6 +65,7 @@ public class BoxPlayer : MonoBehaviour
         {
             IsGrounded = true;
             IsGroundedOnce = true;
+            particles.Stop();
         }
 
         if(collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)

@@ -714,7 +714,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18565324, g: 0.21618012, b: 0.26415092, a: 0}
+  m_BackGroundColor: {r: 0.11276256, g: 0.12048773, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -739,7 +739,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -880,7 +880,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416460923
 GameObject:
@@ -978,7 +978,7 @@ RectTransform:
   m_Children:
   - {fileID: 982199075}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 3433786368525666592}
+  - {fileID: 4048726926525938126, guid: 757f391c68e48c24880e5d68cb636f86, type: 3}
   - {fileID: 7928484981014753365, guid: ccaad8164cdf6e748a426adb08b2c842, type: 3}
   levelNo: 0
   gameCompleteCanvas: {fileID: 982199074}
@@ -1540,12 +1540,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &3433786368525666592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4048726926525938126, guid: 757f391c68e48c24880e5d68cb636f86,
-    type: 3}
-  m_PrefabInstance: {fileID: 8136812868634545076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4471136480919623736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 5530273988336396650, guid: ccaad8164cdf6e748a426adb08b2c842,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5530273988336396650, guid: ccaad8164cdf6e748a426adb08b2c842,
         type: 3}
@@ -1639,7 +1633,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.1
+  m_GravityScale: 1.6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1679,10 +1673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c6967b80fcedd4ca3d8c20875d5aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmt: 4
-  jumpForceAmt: 7
-  isGrounded: 0
-  isGroundedOnce: 0
+  forceAmt: 5
+  jumpForceAmt: 8
+  IsGrounded: 0
+  IsGroundedOnce: 0
 --- !u!1 &5473486794686173377
 GameObject:
   m_ObjectHideFlags: 0

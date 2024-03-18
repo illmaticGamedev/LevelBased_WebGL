@@ -19,7 +19,7 @@ public class LineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        drawLine();
+        //drawLine();
     }
 
     void drawLine()
@@ -50,9 +50,9 @@ public class LineController : MonoBehaviour
             }
             RemovePoint(i);
 
-            /*linePoints[i].position = endPosition;
+            linePoints[i].position = endPosition;
             linePoints.Remove(linePoints[i]);
-            lineRenderer.SetPosition(i, endPosition);*/
+            lineRenderer.SetPosition(i, endPosition);
             yield return null;
         }
         linePoints.Clear();
