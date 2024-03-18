@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - HexSum
+  - Ground
+  - Obstacle
+  - EndPoint
   layers:
   - Default
   - TransparentFX

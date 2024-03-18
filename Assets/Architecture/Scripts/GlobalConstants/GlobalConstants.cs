@@ -3,6 +3,12 @@ using UnityEngine;
 
 public static class GlobalConstants
 {
+    #region GAME TAGS
+    public const string TAG_GROUND = "Ground";
+    public const string TAG_OBSTACLE = "Obstacle";
+    public const string TAG_ENDPT = "EndPoint";
+    #endregion
+
     #region Animations
     public const string ANIM_CLICK = "isClicked";
     #endregion
