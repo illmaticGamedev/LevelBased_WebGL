@@ -9,25 +9,30 @@ public class BoxPlayer : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] float forceAmt = 30f;
     [SerializeField] float jumpForceAmt = 40f ;
-    [SerializeField] bool isGrounded = false;
+    public bool IsGrounded = false;
+    public bool IsGroundedOnce = false; 
+    SoundManager soundManager;
     void Start()
     {
+        soundManager = SoundManager.Instance;
         boxLeapMan = BoxLeapManager.Instance;
         rb = GetComponent<Rigidbody2D>();
+        ResetPlayer();
     }
 
     void frontMovement()
     {
+        if (IsGroundedOnce)
         rb.velocity = new Vector2(forceAmt,rb.velocity.y);
     }
 
     void jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded)
         {
-            Debug.Log("Jump");
             rb.AddForce(new Vector3(rb.velocity.x, jumpForceAmt), ForceMode2D.Impulse);
-            isGrounded = false;
+            soundManager.BounceSound();
+            IsGrounded = false;
         }
     }
 
@@ -40,17 +45,28 @@ public class BoxPlayer : MonoBehaviour
         jump();
     }
 
+    public void ResetPlayer()
+    {
+        IsGrounded = false;
+        IsGroundedOnce = false;
+        rb.velocity = new Vector2(0, 0);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == GlobalConstants.TAG_GROUND)
         {
-            Debug.Log("Ground");
-            isGrounded = true;
+            IsGrounded = true;
+            IsGroundedOnce = true;
         }
 
         if(collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            boxLeapMan.ResetPlayerPos();
+        }
+        if(collision.gameObject.tag == GlobalConstants.TAG_ENDPT)
+        {
+            boxLeapMan.NextLevel();
         }
     }
 }
