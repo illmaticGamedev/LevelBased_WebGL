@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.ParticleSystem;
 
 public class BoxPlayer : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class BoxPlayer : MonoBehaviour
     public bool IsGrounded = false;
     public bool IsGroundedOnce = false; 
     SoundManager soundManager;
+    [SerializeField] ParticleSystem particle;
     void Start()
     {
         soundManager = SoundManager.Instance;
         boxLeapMan = BoxLeapManager.Instance;
         rb = GetComponent<Rigidbody2D>();
+        particle.Stop();
         ResetPlayer();
     }
 
@@ -64,6 +68,10 @@ public class BoxPlayer : MonoBehaviour
 
         if(collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)
         {
+            particle.transform.position = gameObject.transform.position;
+            soundManager.BlastSound();
+            particle.Play();
+            boxLeapMan.DeathTrigger();
             boxLeapMan.ResetPlayerPos();
         }
         if(collision.gameObject.tag == GlobalConstants.TAG_ENDPT)

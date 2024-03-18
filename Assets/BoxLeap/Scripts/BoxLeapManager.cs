@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BoxLeapManager : MonoBehaviour
 {
@@ -11,11 +13,16 @@ public class BoxLeapManager : MonoBehaviour
     [SerializeField] List<GameObject> levels;
     [SerializeField] int levelNo = 0;
     [SerializeField] GameObject gameCompleteCanvas;
+    [SerializeField] TMP_Text deathInfoText;
     GameObject currentLevel = null;
 
     [Header("Player Management")]
     [SerializeField] GameObject playerGameObject;
     [SerializeField] Transform playerSpawnPoint;
+
+    [Header("Death Counter")]
+    int deaths = 0;
+    [SerializeField] TMP_Text deathCounterText;
     private void Awake()
     {
         Instance = this;
@@ -24,6 +31,7 @@ public class BoxLeapManager : MonoBehaviour
     private void Start()
     {
         gameCompleteCanvas.SetActive(false);
+        deathCounterText.text = "0";
         levelSpawn();
     }
 
@@ -33,11 +41,17 @@ public class BoxLeapManager : MonoBehaviour
         ResetPlayerPos();
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void NextLevel()
     {
         levelNo++;
         if(levelNo == levels.Count)
         {
+            deathInfoText.text = "You have completed the game with " + deaths + " Deaths. Can you do better?";
             gameCompleteCanvas.SetActive(true);
         }
         else
@@ -46,6 +60,12 @@ public class BoxLeapManager : MonoBehaviour
             currentLevel = null;
             levelSpawn();
         }
+    }
+
+    public void DeathTrigger()
+    {
+        deaths++;
+        deathCounterText.text = deaths.ToString();
     }
 
     public void ResetPlayerPos()
