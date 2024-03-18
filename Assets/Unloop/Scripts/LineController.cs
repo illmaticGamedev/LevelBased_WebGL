@@ -56,6 +56,7 @@ public class LineController : MonoBehaviour
             lineRenderer.SetPosition(i, endPosition);
             yield return null;
         }
+        unloopPuzle.IsComplete = true;
         linePoints.Clear();
     }
 

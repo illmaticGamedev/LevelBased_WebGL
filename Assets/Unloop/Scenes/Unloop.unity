@@ -267,7 +267,7 @@ MonoBehaviour:
   - {fileID: 2112289579}
   - {fileID: 38021360}
   - {fileID: 1901544795}
-  animationTime: 5
+  animationTime: 2
 --- !u!120 &391460380
 LineRenderer:
   serializedVersion: 2
@@ -723,7 +723,7 @@ MonoBehaviour:
   linePoints:
   - {fileID: 1648715095}
   - {fileID: 1768048888}
-  animationTime: 5
+  animationTime: 2
 --- !u!120 &600701939
 LineRenderer:
   serializedVersion: 2
