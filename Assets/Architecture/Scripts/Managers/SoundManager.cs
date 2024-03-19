@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip startClip, backClip, levelOpenClip, completeClip, tapSound, bounceClip, blastClip;
+    [SerializeField] AudioClip startClip, backClip, levelOpenClip, completeClip, tapSound, bounceClip, blastClip, errorClip;
 
     private void Awake()
     {
@@ -47,5 +47,10 @@ public class SoundManager : MonoBehaviour
     public void BlastSound()
     {
         audioSource.PlayOneShot(blastClip);
+    }
+
+    public void ErrorSound()
+    {
+        audioSource.PlayOneShot(errorClip);
     }
 }

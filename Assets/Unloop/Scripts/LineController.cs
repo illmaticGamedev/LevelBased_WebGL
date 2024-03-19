@@ -9,17 +9,22 @@ public class LineController : MonoBehaviour
     [SerializeField] float animationTime = 5f;
     int pointsCount;
     UnloopPuzzle unloopPuzle;
+    UnloopManager unloopManager;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         unloopPuzle= GetComponentInParent<UnloopPuzzle>();
+        unloopManager = UnloopManager.Instance;
         pointsCount = linePoints.Count;
         drawLine();
     }
 
     public void LineRetraction()
     {
-        StartCoroutine(retractLine());
+        if (!unloopPuzle.IsLineLocked())
+            StartCoroutine(retractLine());
+        else
+            Debug.Log("STUCK");
     }
 
     void drawLine()
@@ -57,6 +62,7 @@ public class LineController : MonoBehaviour
             yield return null;
         }
         unloopPuzle.IsComplete = true;
+        unloopManager.completeVerification();
         linePoints.Clear();
     }
 

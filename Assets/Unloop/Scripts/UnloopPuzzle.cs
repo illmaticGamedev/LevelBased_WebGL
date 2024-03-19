@@ -5,14 +5,18 @@ using UnityEngine;
 public class UnloopPuzzle : MonoBehaviour
 {
     public bool IsComplete = false;
-    void Start()
-    {
-        
-    }
+    [SerializeField] List<UnloopPuzzle> dependentLoops;
 
-
-    void Update()
+    public bool IsLineLocked()
     {
-        
+        if(dependentLoops.Count > 0)
+        foreach(UnloopPuzzle loop in dependentLoops)
+        {
+            if (!loop.IsComplete)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
