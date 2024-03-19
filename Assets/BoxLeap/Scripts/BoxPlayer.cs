@@ -49,15 +49,15 @@ public class BoxPlayer : MonoBehaviour
 
         Quaternion fromRotation = transform.rotation;
 
-        Quaternion toRotation = Quaternion.Euler(0f, 0f, 180f);
+        Quaternion toRotation = Quaternion.Euler(0f, 0f, -90f);
 
         float elapsedTime = 0f;
-        float rotationDuration = 0.8f;
+        float rotationDuration = 0.5f;
 
         while (elapsedTime < rotationDuration)
         {
             transform.rotation = Quaternion.Slerp(fromRotation, toRotation, elapsedTime / rotationDuration);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.fixedDeltaTime;
             yield return null;
         }
 
