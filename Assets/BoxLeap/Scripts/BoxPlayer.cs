@@ -10,9 +10,9 @@ public class BoxPlayer : MonoBehaviour
     BoxLeapManager boxLeapMan;
     Rigidbody2D rb;
     [SerializeField] float forceAmt = 30f;
-    [SerializeField] float jumpForceAmt = 40f ;
+    [SerializeField] float jumpForceAmt = 40f;
     public bool IsGrounded = false;
-    public bool IsGroundedOnce = false; 
+    public bool IsGroundedOnce = false;
     SoundManager soundManager;
     [SerializeField] ParticleSystem particle;
     void Start()
@@ -34,12 +34,34 @@ public class BoxPlayer : MonoBehaviour
 
     void jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded)
         {
             rb.AddForce(new Vector3(rb.velocity.x, jumpForceAmt), ForceMode2D.Impulse);
             soundManager.BounceSound();
+            StopCoroutine(RotatePlayerCoroutine());
+            StartCoroutine(RotatePlayerCoroutine());
             IsGrounded = false;
         }
+    }
+
+    IEnumerator RotatePlayerCoroutine()
+    {
+
+        Quaternion fromRotation = transform.rotation;
+
+        Quaternion toRotation = Quaternion.Euler(0f, 0f, 180f);
+
+        float elapsedTime = 0f;
+        float rotationDuration = 0.8f;
+
+        while (elapsedTime < rotationDuration)
+        {
+            transform.rotation = Quaternion.Slerp(fromRotation, toRotation, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     private void FixedUpdate()
@@ -66,7 +88,7 @@ public class BoxPlayer : MonoBehaviour
             IsGroundedOnce = true;
         }
 
-        if(collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)
+        if (collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)
         {
             particle.transform.position = gameObject.transform.position;
             soundManager.BlastSound();
@@ -74,7 +96,7 @@ public class BoxPlayer : MonoBehaviour
             boxLeapMan.DeathTrigger();
             boxLeapMan.ResetPlayerPos();
         }
-        if(collision.gameObject.tag == GlobalConstants.TAG_ENDPT)
+        if (collision.gameObject.tag == GlobalConstants.TAG_ENDPT)
         {
             boxLeapMan.NextLevel();
         }
