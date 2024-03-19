@@ -52,7 +52,7 @@ public class UnloopManager : MonoBehaviour
         if(verifyCount == lineCount)
         {
             levelNo++;
-            LevelSpawn();
+            fadeCanvas.SetTrigger(GlobalConstants.ANIM_FADE);
         }
     }
 

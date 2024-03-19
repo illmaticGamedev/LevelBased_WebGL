@@ -30,6 +30,8 @@ public class LineController : MonoBehaviour
         }
         else
         {
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
             soundManager.ErrorSound();
             unloopManager.FadeInPlay();
         }
@@ -37,6 +39,7 @@ public class LineController : MonoBehaviour
 
     void drawLine()
     {
+        lineRenderer.widthMultiplier = 0.2f;
         lineRenderer.positionCount = pointsCount;
         for (int i = 0; i < linePoints.Count; i++)
         {
