@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,10 +15,13 @@ public class UnloopManager : MonoBehaviour
     GameObject currentLevel = null;
 
     [Header("Unloop Puzzle")]
-    [SerializeField] UnloopPuzzle[] lineList;
+    [SerializeField] List<UnloopPuzzle> lineList;
     [SerializeField] int lineCount = 0;
     [SerializeField] int verifyCount = 9;
+
+    [Header("Transition")]
     [SerializeField] GameObject gameCompleteCanvas;
+    [SerializeField] Animator fadeCanvas;
     private void Awake()
     {
         Instance = this;
@@ -24,20 +29,22 @@ public class UnloopManager : MonoBehaviour
 
     private void Start()
     {
-        levelSpawn();
+        LevelSpawn();
         loopCount();
     }
 
     void loopCount()
     {
-        lineList = FindObjectsOfType<UnloopPuzzle>();
-        lineCount = lineList.Length;
+        lineList.Clear();
+        lineList.AddRange(GameObject.FindObjectsOfType<UnloopPuzzle>());
+        lineCount = lineList.Count;
     }
 
-    public void completeVerification()
+    public void CompleteVerification()
     {
         verifyCount = 0;
-        for (int i = 0;i<lineList.Length;i++)
+        loopCount();
+        for (int i = 0;i<lineList.Count; i++)
         {
             if (lineList[i].IsComplete)
                 verifyCount++;
@@ -45,11 +52,16 @@ public class UnloopManager : MonoBehaviour
         if(verifyCount == lineCount)
         {
             levelNo++;
-            levelSpawn();
+            LevelSpawn();
         }
     }
 
-    void levelSpawn()
+    public void FadeInPlay()
+    {
+        fadeCanvas.SetTrigger(GlobalConstants.ANIM_FADE);
+    }
+
+    public void LevelSpawn()
     {
         if(levelNo == levels.Count)
         {
@@ -60,7 +72,6 @@ public class UnloopManager : MonoBehaviour
         if(currentLevel!= null)
         Destroy(currentLevel.gameObject);
         currentLevel = Instantiate(levels[levelNo]);
-        lineList = null;
         loopCount();
         }
     }

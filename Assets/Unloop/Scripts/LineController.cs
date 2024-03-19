@@ -10,11 +10,13 @@ public class LineController : MonoBehaviour
     int pointsCount;
     UnloopPuzzle unloopPuzle;
     UnloopManager unloopManager;
+    SoundManager soundManager;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         unloopPuzle= GetComponentInParent<UnloopPuzzle>();
         unloopManager = UnloopManager.Instance;
+        soundManager = SoundManager.Instance;
         pointsCount = linePoints.Count;
         drawLine();
     }
@@ -22,9 +24,15 @@ public class LineController : MonoBehaviour
     public void LineRetraction()
     {
         if (!unloopPuzle.IsLineLocked())
+        {
+            soundManager.TapSound();
             StartCoroutine(retractLine());
+        }
         else
-            Debug.Log("STUCK");
+        {
+            soundManager.ErrorSound();
+            unloopManager.FadeInPlay();
+        }
     }
 
     void drawLine()
@@ -62,7 +70,8 @@ public class LineController : MonoBehaviour
             yield return null;
         }
         unloopPuzle.IsComplete = true;
-        unloopManager.completeVerification();
+        soundManager.BounceSound();
+        unloopManager.CompleteVerification();
         linePoints.Clear();
     }
 

@@ -189,7 +189,7 @@ LineRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
@@ -963,7 +963,6 @@ Transform:
   m_Children:
   - {fileID: 6240423029081842251}
   - {fileID: 2325544761611519379}
-  - {fileID: 5856862741465039799}
   m_Father: {fileID: 2173052860509081149}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1141,7 +1140,7 @@ LineRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MaskInteraction: 2
+  m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
@@ -1232,11 +1231,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8139821646048930088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.459, y: -6.675, z: -3.8900146}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 3.459, y: 0.008820772, z: -3.8900146}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1810547482782006689}
+  m_Father: {fileID: 2071944560719622999}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &6427703472897481447
@@ -1322,6 +1321,7 @@ Transform:
   m_Children:
   - {fileID: 7097328369182216899}
   - {fileID: 8096888279649825047}
+  - {fileID: 5856862741465039799}
   m_Father: {fileID: 2173052860509081149}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1372,5 +1372,5 @@ Transform:
   - {fileID: 2071944560719622999}
   - {fileID: 7775730309790073905}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
