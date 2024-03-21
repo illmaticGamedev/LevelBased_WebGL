@@ -13,6 +13,7 @@ public static class GlobalConstants
     public const string ANIM_CLICK = "isClicked";
     public const string ANIM_ISROTATING = "isRotating";
     public const string ANIM_FADE = "isFading";
+    public const string ANIM_BOXATTACH = "attachBox";
     #endregion
 
     #region PlayerPrefs

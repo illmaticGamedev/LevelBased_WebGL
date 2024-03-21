@@ -9,10 +9,6 @@ public class MovableBox : MonoBehaviour
     Vector2 move;
     float xVal, yVal = 0;
     [SerializeField] float speed = 2f;
-    void Start()
-    {
-
-    }
 
     public void MoveInDirection(float x, float y)
     {
@@ -39,15 +35,5 @@ public class MovableBox : MonoBehaviour
     {
         move = new Vector2(xVal, yVal);
         transform.Translate(move * speed * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collison");
-        if (collision.gameObject.tag == GlobalConstants.TAG_OBSTACLE)
-        {
-            Debug.Log("Collison with obstacle");
-            StopMoving();
-        }
     }
 }
