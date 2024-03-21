@@ -333,6 +333,8 @@ MonoBehaviour:
   - {fileID: 2899209463793626960}
   - {fileID: 6751303823324126789}
   animationTime: 1
+  isMaskAttached: 1
+  spriteMask: {fileID: 5261727744496134021}
 --- !u!120 &6898400850566191339
 LineRenderer:
   serializedVersion: 2
@@ -464,11 +466,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5261727744496134021}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.100805, y: 8.355556, z: 1.9845662}
-  m_LocalScale: {x: 1.028939, y: 1.028939, z: 1.028939}
+  m_LocalPosition: {x: -4.079525, y: 0.18799996, z: -3.8900146}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8260257499054374957}
+  m_Father: {fileID: 1647208111705248472}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &2695123463795471572
@@ -556,7 +558,6 @@ RectTransform:
   - {fileID: 7485503631736444193}
   - {fileID: 3603706675979224766}
   - {fileID: 4911567619995728036}
-  - {fileID: 4633674926408178151}
   m_Father: {fileID: 3407454838512174630}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -582,6 +583,8 @@ MonoBehaviour:
   - {fileID: 3603706675979224766}
   - {fileID: 4911567619995728036}
   animationTime: 1
+  isMaskAttached: 0
+  spriteMask: {fileID: 5261727744496134021}
 --- !u!120 &975705966891444184
 LineRenderer:
   serializedVersion: 2
@@ -885,7 +888,7 @@ Transform:
   - {fileID: 3407454838512174630}
   - {fileID: 1647208111705248472}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8760545307405515588
 GameObject:
@@ -918,6 +921,7 @@ Transform:
   m_Children:
   - {fileID: 174756943228177515}
   - {fileID: 7194823565473711087}
+  - {fileID: 4633674926408178151}
   m_Father: {fileID: 6785202451375066914}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

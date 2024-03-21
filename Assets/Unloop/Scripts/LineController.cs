@@ -11,6 +11,10 @@ public class LineController : MonoBehaviour
     UnloopPuzzle unloopPuzle;
     UnloopManager unloopManager;
     SoundManager soundManager;
+
+    [Header("SpriteMask")]
+    [SerializeField] bool isMaskAttached = false;
+    [SerializeField] GameObject spriteMask;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -62,6 +66,14 @@ public class LineController : MonoBehaviour
             {
                 t = (Time.time - startTime) / segmentDuration;
                 lineRenderer.SetPosition(i, Vector3.Lerp(startPosition, endPosition, t));
+                if(isMaskAttached)
+                {
+                    float distn = Vector3.Distance(lineRenderer.GetPosition(i), spriteMask.transform.position);
+                    if(distn < 5f) 
+                    {
+                        unloopPuzle.IsComplete = true;
+                    }
+                }
                 yield return null;
             }
             RemovePoint(i);
