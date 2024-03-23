@@ -13,6 +13,7 @@ public class SulkaPlayer : MonoBehaviour
     bool stopMovement = false;
     SulkaLevelManager levelMan;
     SoundManager soundManager;
+    bool isFlipped = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,6 +58,18 @@ public class SulkaPlayer : MonoBehaviour
         {
             anim.SetFloat(GlobalConstants.ANIM_SPEED, 1); // Moving
         }
+
+        if(inputX >0 && isFlipped)
+        {
+            isFlipped = false;
+            flip();
+        }
+        else if(inputX < 0 && !isFlipped)
+        {
+            isFlipped = true;
+            flip();
+        }
+
         rb.velocity = new Vector2((inputX * speed), rb.velocity.y);
     }
 
@@ -68,6 +81,13 @@ public class SulkaPlayer : MonoBehaviour
     void nextLevel()
     {
         levelMan.NextLevel();
+    }
+
+    void flip()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

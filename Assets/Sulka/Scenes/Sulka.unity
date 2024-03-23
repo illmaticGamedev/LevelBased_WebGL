@@ -1860,6 +1860,7 @@ MonoBehaviour:
   - {fileID: 853669426056394708, guid: 39296d63613b35b428e1e4999a6a507c, type: 3}
   - {fileID: 6029903061612143509, guid: 252d9e44911fc324ab9d4e63587344f2, type: 3}
   - {fileID: 1759703879130445681, guid: 2afb0ccb4bbd2984cbdb90fd1547d564, type: 3}
+  - {fileID: 2567691466840485126, guid: 62dce90edef0c664b9166adfef89d77c, type: 3}
   levelNo: 0
   gameCompleteCanvas: {fileID: 542087993}
 --- !u!1 &1352081446
