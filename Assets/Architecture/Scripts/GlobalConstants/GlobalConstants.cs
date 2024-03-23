@@ -14,6 +14,10 @@ public static class GlobalConstants
     public const string ANIM_ISROTATING = "isRotating";
     public const string ANIM_FADE = "isFading";
     public const string ANIM_BOXATTACH = "attachBox";
+    public const string ANIM_SPEED = "speed";
+    public const string ANIM_DEAD = "isDead";
+    public const string ANIM_WON = "hasWon";
+    public const string ANIM_JUMP = "isJumping";
     #endregion
 
     #region PlayerPrefs

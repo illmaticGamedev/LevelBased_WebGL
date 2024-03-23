@@ -9,6 +9,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip startClip, backClip, levelOpenClip, completeClip, tapSound, bounceClip, blastClip, errorClip;
 
+    [Header("Cat Game")]
+    [SerializeField] AudioClip jumpClip, dieClip, wonClip;
+
     private void Awake()
     {
         Instance = this;
@@ -52,5 +55,19 @@ public class SoundManager : MonoBehaviour
     public void ErrorSound()
     {
         audioSource.PlayOneShot(errorClip);
+    }
+
+    public void JumpSound()
+    {
+        audioSource.PlayOneShot(jumpClip);
+    }
+    public void DeadSound()
+    {
+        audioSource.PlayOneShot(dieClip);
+    }
+
+    public void WonSound()
+    {
+        audioSource.PlayOneShot(wonClip);
     }
 }
