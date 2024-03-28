@@ -124,11 +124,6 @@ public class SulkaPlayer : MonoBehaviour
         localScale.y *= -1;
         transform.localScale = localScale;
     }
-    
-    void gravityReverse()
-    {
-
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
