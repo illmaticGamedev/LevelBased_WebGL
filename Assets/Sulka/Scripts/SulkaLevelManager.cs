@@ -12,6 +12,7 @@ public class SulkaLevelManager : MonoBehaviour
     [SerializeField] int levelNo = 0;
     [SerializeField] GameObject gameCompleteCanvas;
     GameObject currentLevel = null;
+    [SerializeField] GameObject deathParticleSystem;
 
     private void Awake()
     {
@@ -27,6 +28,12 @@ public class SulkaLevelManager : MonoBehaviour
     void levelSpawn()
     {
         currentLevel = Instantiate(levels[levelNo]);
+    }
+
+    public GameObject ParticleSystemSpawn()
+    {
+        GameObject ps = Instantiate(deathParticleSystem, currentLevel.transform);
+        return ps;
     }
 
     public void RestartScene()

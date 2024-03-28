@@ -5,30 +5,41 @@ using UnityEngine;
 public class MovingObstacle : MonoBehaviour
 {
     [SerializeField] float speed = 2f;
-    Vector2 targetPos;
+    [SerializeField] Transform point1;
+    [SerializeField] Transform point2;
+    Transform targetPoint;
 
-    [SerializeField] Transform wavepointParent;
-    List<Transform> wavepoints;
-    int pointIndex = 0;
-    int wavepointCount = 0;
-    int direction = 1;
-
-    private void Awake()
+    private void Start()
     {
-        addWavepoints();
-    }
-    void Start()
-    {
+        GameObject newTarget = new GameObject("TargetPoint");
+        newTarget.transform.SetParent(transform.parent);
+        newTarget.transform.position = point2.position;
+        targetPoint = newTarget.transform;
     }
 
-    void addWavepoints()
+    private void Update()
     {
-        wavepointCount = wavepointParent.childCount;
-        for (int i = 0; i < wavepointCount; i++)
+        moveBetweenPoints();
+    }
+
+    void moveBetweenPoints()
+    {
+        if(transform.position == targetPoint.position)
         {
-            wavepoints.Add(wavepointParent.GetChild(i));
+            switchTarget();
+        }
+            transform.position = Vector2.MoveTowards(transform.position, targetPoint.transform.position, speed * Time.deltaTime);
+    }
+
+    void switchTarget()
+    {
+        if(targetPoint.position == point1.position)
+        {
+            targetPoint.position = point2.position;
+        }
+        else
+        {
+            targetPoint.position = point1.position;
         }
     }
-
-
 }

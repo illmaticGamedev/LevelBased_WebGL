@@ -7,6 +7,7 @@ public static class GlobalConstants
     public const string TAG_GROUND = "Ground";
     public const string TAG_OBSTACLE = "Obstacle";
     public const string TAG_ENDPT = "EndPoint";
+    public const string TAG_GRAVITYPLATFORM = "GravityReverse";
     #endregion
 
     #region Animations
